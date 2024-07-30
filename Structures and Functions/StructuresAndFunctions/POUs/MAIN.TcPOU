@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{bdc4ab82-e035-4559-afb2-1b6836e8376d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+stThisIsOurFirstInstanceOfAStructure : ST_Event;
+bBoolean : BOOL := FALSE;
+fFahrenheit : REAL ;
+nReturnGreater: INT ;
+nReturnSmaller : INT;
+
+nA : INT := 5 ;
+nB : INT := 15;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fFahrenheit := Celcius_to_Fahrenet(fCelcius:= 5.0) ;
+
+Greater_Smaller (nNumber1:=8,
+	             nNumber2:=15,
+				 nGreater => nReturnGreater,
+				 nSmaller=>nReturnSmaller );			 
+SwapNums(nNumber3 := nA, 
+		 nNumber4 := nB);
+		 
+IF NOT bBoolean THEN
+UpdateEventTimeStampWithSystemTime(ST_Event := stThisIsOurFirstInstanceOfAStructure);
+bBoolean:= TRUE;
+	
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="13" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="2" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="39" Count="2" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="46" Count="1" />
+      <LineId Id="42" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="Celcius_to_Fahrenet" Id="{1721cd38-099d-4b26-b004-a0780ea9c5d7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Celcius_to_Fahrenet : REAL
+VAR_INPUT
+	fCelcius: REAL;
+	
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Celcius_to_Fahrenet := fCelcius * 1.8 +32.0 ;
+ ]]></ST>
+    </Implementation>
+    <LineIds Name="Celcius_to_Fahrenet">
+      <LineId Id="7" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
