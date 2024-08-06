@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="EventBuffer" Id="{d1d2c112-947b-42a0-bd56-69bc249753b9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EventBuffer
+VAR
+	MemRingBuffer : FB_MemRingBuffer ;
+	BufferArray  : ARRAY[0..MAX_BUFFER_SIZE] OF BYTE; (* Buffer memory used by FB_MemRingBuffer function block *)
+END_VAR
+
+VAR CONSTANT 
+	 MAX_BUFFER_SIZE : UDINT := 1000;
+	 SIZE_OF_ST_EVENT : UDINT := SIZEOF(ST_Event);
+	 MAX_NUMBER_OF_ST_EVENT : UDINT := 5;
+	 NUMBER_OF_BYTES_FOR_ALL_ST_EVENT: UDINT := SIZE_OF_ST_EVENT *  MAX_NUMBER_OF_ST_EVENT;
+	 	
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="AddEvent" Id="{347a902f-1fdc-4e0a-97f2-6f4bf0d69574}">
+      <Declaration><![CDATA[METHOD PUBLIC AddEvent
+VAR_INPUT
+	st_Event : REFERENCE TO  ST_Event ;
+	
+END_VAR
+
+VAR_OUTPUT
+	bError : BOOL;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[MemRingBuffer.A_AddTail(pWrite := ADR(st_Event),
+	                    cbWrite := SIZEOF(st_Event),
+						pBuffer := ADR(BufferArray),
+						cbBuffer := SIZEOF(BufferArray));
+
+						
+bError := NOT MemRingBuffer.bOk;
+
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ReadAndRemoveEvent" Id="{d1d1f83a-f57b-435f-a815-2e6980d6b487}">
+      <Declaration><![CDATA[METHOD PUBLIC ReadAndRemoveEvent
+VAR_OUTPUT
+	stEvent	: ST_Event;
+	bError : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[MemRingBuffer.A_RemoveHead(pRead := ADR(stEvent),
+	                       cbRead := SIZEOF(stEvent),
+						   pBuffer := ADR(BufferArray),
+						   cbBuffer := SIZEOF(BufferArray));
+
+						
+bError := NOT MemRingBuffer.bOk;	]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="EventBuffer">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="EventBuffer.AddEvent">
+      <LineId Id="5" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="EventBuffer.ReadAndRemoveEvent">
+      <LineId Id="9" Count="5" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
