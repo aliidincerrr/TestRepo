@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{40D74B96-029B-4024-999F-988670F5DA75}" Name="Twincat_Utulities" PrjFilePath="Twincat_Utulities\Twincat_Utulities.plcproj" TmcFilePath="Twincat_Utulities\Twincat_Utulities.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Twincat_Utulities\Twincat_Utulities.tmc">
 					<Name>Twincat_Utulities Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

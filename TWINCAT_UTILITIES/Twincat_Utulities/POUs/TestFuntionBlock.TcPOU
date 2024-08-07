@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="TestFuntionBlock" Id="{b67aa33f-7126-40c2-946d-4429c73b2e3d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK TestFuntionBlock
+VAR
+	nCounter : LINT;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[nCounter := nCounter +1;
+]]></ST>
+    </Implementation>
+    <LineIds Name="TestFuntionBlock">
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
