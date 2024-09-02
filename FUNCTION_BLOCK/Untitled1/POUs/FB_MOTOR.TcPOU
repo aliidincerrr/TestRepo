@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_MOTOR" Id="{5df450a1-b05b-432e-814f-793b25fd7bb4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MOTOR
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="PowerEnable" Id="{c98e3623-dc81-4c6d-b21e-046f5c449779}">
+      <Declaration><![CDATA[METHOD PowerEnable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_MOTOR">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_MOTOR.PowerEnable">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
